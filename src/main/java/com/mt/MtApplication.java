@@ -11,6 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @Date: 2020/1/13 13:40
  */
 @SpringBootApplication
+
 @Slf4j
 public class MtApplication {
     public static void main(String[] args) {
