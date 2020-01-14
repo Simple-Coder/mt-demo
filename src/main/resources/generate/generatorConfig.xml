@@ -11,7 +11,7 @@
 
 		<plugin type="tk.mybatis.mapper.generator.MapperPlugin">
 			<property name="mappers"
-					  value="com.mt.mapper.base.BaseMapper" />
+					  value="com.mt.base.BaseMapper" />
 			<property name="caseSensitive" value="true" />
 			<!--<property name="beginningDelimiter" value="`"/> -->
 			<!--<property name="endingDelimiter" value="`"/> -->

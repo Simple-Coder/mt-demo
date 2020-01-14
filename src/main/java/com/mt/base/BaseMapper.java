@@ -1,4 +1,4 @@
-package com.mt.mapper.base;
+package com.mt.base;
 
 import tk.mybatis.mapper.common.IdsMapper;
 import tk.mybatis.mapper.common.Mapper;

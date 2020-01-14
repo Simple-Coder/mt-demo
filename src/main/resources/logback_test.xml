@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration>
+
+<configuration debug="false">
+	<contextName>flash-discount-online-app</contextName>
+	<!-- 使用maven profile替换logHome -->
+	<property name="logHome" value="../logs" scope="context" />
+
+	<!-- JMX监控 -->
+	<jmxConfigurator />
+	<logger name="org.quartz" level="ERROR"/>
+	<!-- 控制台日志 -->
+	<appender name="CONSOLE"
+			  class="ch.qos.logback.core.ConsoleAppender">
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<pattern><![CDATA[
+				%-4r %d{yyyy-MM-dd HH:mm:ss.SSS} %thread %-5level [%X{sender}] [%X{receiver}] [%X{sendmsgid}] [%X{sysmsgid}] [%X{chlmsgid}] [%X{msgtype}] [%X{eagleeyeid}] %logger - %m%n
+            ]]></pattern>
+		</layout>
+	</appender>
+
+	<!-- INFO日志 -->
+	<appender name="DEBUG"
+			  class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>DEBUG</level>
+		</filter>
+		<rollingPolicy
+				class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${logHome}/%d{yyyy-MM-dd}/debug_%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy
+					class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>50MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+		<encoder>
+			<Pattern>
+				%-4r %d{yyyy-MM-dd HH:mm:ss.SSS} %thread %-5level
+				[%X{sender}] [%X{receiver}] [%X{sendmsgid}] [%X{sysmsgid}] [%X{chlmsgid}]
+				[%X{msgtype}] [%X{eagleeyeid}] %logger - %m%n
+			</Pattern>
+		</encoder>
+	</appender>
+
+	<!-- 错误及警告日志 -->
+	<appender name="ERROR_WARN"
+			  class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>WARN</level>
+		</filter>
+		<rollingPolicy
+				class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${logHome}/%d{yyyy-MM-dd}/error_warn_%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy
+					class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>50MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+		<encoder>
+			<Pattern>
+				%-4r %d{yyyy-MM-dd HH:mm:ss.SSS} %thread %-5level
+				[%X{sender}] [%X{receiver}] [%X{sendmsgid}] [%X{sysmsgid}] [%X{chlmsgid}]
+				[%X{msgtype}] [%X{eagleeyeid}] %logger - %m%n
+			</Pattern>
+		</encoder>
+	</appender>
+
+	<!-- INFO日志 -->
+	<appender name="INFO"
+			  class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>INFO</level>
+		</filter>
+		<rollingPolicy
+				class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${logHome}/%d{yyyy-MM-dd}/info_%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy
+					class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>50MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+		<encoder>
+			<Pattern>
+				%-4r %d{yyyy-MM-dd HH:mm:ss.SSS} %thread %-5level
+				[%X{sender}] [%X{receiver}] [%X{sendmsgid}] [%X{sysmsgid}] [%X{chlmsgid}]
+				[%X{msgtype}] [%X{eagleeyeid}] %logger - %m%n
+			</Pattern>
+		</encoder>
+	</appender>
+
+	<!-- DRUID日志 -->
+	<appender name="DRUID"
+			  class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>WARN</level>
+		</filter>
+		<rollingPolicy
+				class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${logHome}/%d{yyyy-MM-dd}/druid_%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy
+					class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>50MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+		<encoder>
+			<Pattern>
+				%-4r %d{yyyy-MM-dd HH:mm:ss.SSS} %thread %-5level
+				[%X{sender}] [%X{receiver}] [%X{sendmsgid}] [%X{sysmsgid}] [%X{chlmsgid}]
+				[%X{msgtype}] [%X{eagleeyeid}] %logger - %m%n
+			</Pattern>
+		</encoder>
+	</appender>
+
+	<logger name="druid.sql">
+		<level value="debug" />
+		<appender-ref ref="DRUID" />
+	</logger>
+	<logger name="druid.sql.DataSource">
+		<level value="error" />
+		<appender-ref ref="DRUID" />
+	</logger>
+	<logger name="druid.sql.Connection">
+		<level value="error" />
+		<appender-ref ref="DRUID" />
+	</logger>
+	<logger name="druid.sql.ResultSet">
+		<level value="debug" />
+		<appender-ref ref="DRUID" />
+	</logger>
+
+	<!-- 根配置 -->
+	<root level="DEBUG">
+		<appender-ref ref="CONSOLE" />
+		<appender-ref ref="INFO" />
+		<appender-ref ref="DEBUG" />
+		<appender-ref ref="ERROR_WARN" />
+	</root>
+
+</configuration>
