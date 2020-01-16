@@ -11,7 +11,7 @@ import tk.mybatis.spring.annotation.MapperScan;
  * @Author: xiedong
  * @Date: 2020/1/13 13:40
  */
-@SpringBootApplication(scanBasePackages = {"com.mt.*"})
+@SpringBootApplication
 //@ComponentScan(basePackages = {"com.mt.advice","com.mt.aop","com.mt.controller","com.mt.service"})
 @MapperScan("com.mt.mapper")
 @Slf4j

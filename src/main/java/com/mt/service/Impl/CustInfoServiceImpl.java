@@ -29,7 +29,7 @@ import java.util.concurrent.ExecutorService;
 @Slf4j
 //@Transactional
 public class CustInfoServiceImpl extends BaseService implements ICustInfoService {
-    @Autowired(required = false)
+    @Autowired
     private CustInfoMapper custInfoMapper;
     @Autowired
     private TransCustInfoService transCustInfoService;
@@ -40,6 +40,7 @@ public class CustInfoServiceImpl extends BaseService implements ICustInfoService
         RspHeader rspHeader = super.gennerateReqHeader("000000", "受理成功");
         CustInfoRspBody custInfoRspBody = new CustInfoRspBody();
         custInfoRspBody.setMsg("受理成功");
+        List<CustInfo> custInfos = this.custInfoMapper.selectAll();
         //异步处理业务
         ExecutorService executorService = ThreadPoolFactory.newInstance().add(this.getClass().getName(), req.getHeader().getTransId(), req.getHeader().getChannelId());
         executorService.submit(new Runnable() {
