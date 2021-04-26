@@ -29,7 +29,7 @@
         <http.core.version>4.4.10</http.core.version>
         <commons-codes.version>1.13</commons-codes.version>
         <commons-net.version>3.3</commons-net.version>
-        <commons.io.version>2.2</commons.io.version>
+        <commons.io.version>2.7</commons.io.version>
     </properties>
 
     <dependencies>
